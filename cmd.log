@@ -1,0 +1,222 @@
+    1  seqtk --help
+    2  man seqtk
+    3  quit
+    4  ls
+    5  ls -lah
+    6  tree
+    7  snap install tree
+    8  apt moo
+    9  ln -s /usr/share/data-minor-bioinf/assembly/oil_R1.fastq
+   10  ls
+   11  ln -s /usr/share/data-minor-bioinf/assembly/oil_R2.fastq
+   12  ls
+   13  ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R1_001.fastq
+   14  ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R2_001.fastq
+   15  ls
+   16  less oilMP_S4_L001_R1_001.fastq 
+   17  ls
+   18  htop
+   19  python -c "from time import wait; wait(3)"
+   20  python3 -c "from time import wait; wait(3)"
+   21  python3 -c "from time import sleep; sleep(3)"
+   22  python3 -c "from time import sleep; sleep(5)"
+   23  python3 -c "from time import sleep; sleep(5)" &
+   24  less assemble.log 
+   25  htop
+   26  npm install gtop -g
+   27  ls -lah
+   28  htop
+   29  ls
+   30  seqtk sample -s121 oil_R1.fastq 5000000 > pe_R1.fastq
+   31  seqtk sample -s1025 oil_R2.fastq 5000000 > pe_R2.fastq
+   32  ls
+   33  rm pe_R2.fastq 
+   34  seqtk sample -s121 oil_R2.fastq 5000000 > pe_R2.fastq
+   35  ls
+   36  seqtk sample -s121 oilMP_S4_L001_R1_001.fastq 1500000 > mp_R1.fastq
+   37  seqtk sample -s121 oilMP_S4_L001_R2_001.fastq 1500000 > mp_R2.fastq
+   38  history | less
+   39  ls
+   40  rm oil*
+   41  ls
+   42  mkdir fastqc
+   43  ls *.fastq | xargs -P 4 -tI{} fastqc -o fastqc {}
+   44  mkdir multiqc
+   45  multiqc -o multiqc fastqc
+   46  ls
+   47  platanus_trim pe_R1.fastq pe_R2.fastq 
+   48  nano
+   49  nano platanus_trim_output
+   50  echo "hi" &> oo
+   51  cat oo
+   52  rm oo
+   53  platanus_internal_trim mp_R1.fastq mp_R2.fastq >platanus_internal_trim_output
+   54  ls
+   55  cat platanus_internal_trim_output 
+   56  cat platanus_trim_output 
+   57  nano platanus_internal_trim_output 
+   58  ls
+   59  ls multiqc/
+   60  scp multiqc/multiqc_report.html bazitur@vasily-home:/home/bazitur/Downloads/multiqc_report.html
+   61  scp multiqc/multiqc_report.html /home/bazitur/Downloads/multiqc_report.html
+   62  ls
+   63  ls -1 *.fastq | xargs -tI{} rm -r {}
+   64  ls
+   65  mkdir trimmed_fastq
+   66  mv -v *trimmed trimmed_fastq/
+   67  mkdir trimmed_fastqc
+   68  ls trimmed_fastq/* | xargs -P 4 -tI{} fastqc -o trimmed_fastqc {}
+   69  mkdir trimmed_multiqc
+   70  multiqc -o trimmed_multiqc trimmed_fastqc
+   71  time platanus assemble -o Poil -f trimmed_fastq/pe_R1.fastq.trimmed trimmed_fastq/pe_R2.fastq.trimmed 2> assemble.log
+   72  time platanus scaffold -o Poil -c Poil_contig.fa -IP1 trimmed_fastq/pe_R1.fastq.trimmed  trimmed_fastq/pe_R2.fastq.trimmed -OP2 trimmed_fastq/mp_R1.fastq.int_trimmed trimmed_fastq/mp_R2.fastq.int_trimmed 2> scaffold.log &
+   73  htop
+   74  echo scaffold1_len3834575_cov231 > name_scaff.txt
+   75  seqtk subseq Poil_scaffold.fa name_scaff.txt > BigScaff.fna
+   76  time platanus gap_close -o Poil -c Poil_scaffold.fa -IP1 trimmed_fastq/pe_R1.fastq.trimmed  trimmed_fastq/pe_R2.fastq.trimmed -OP2 trimmed_fastq/mp_R1.fastq.int_trimmed trimmed_fastq/mp_R2.fastq.int_trimmed 2> gapclose.log
+   77  less scaffold1_len3834575_cov231
+   78  ls
+   79  less scaffold.log 
+   80  ipython
+   81  jupyter --help
+   82  wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
+   83  bash Miniconda3-py39_4.12.0-Linux-x86_64.sh
+   84  pip install jupyter
+   85  pip install jupyterlab
+   86  conda install jupyterlab
+   87  source activate base
+   88  conda activate base
+   89  ls
+   90  ls -lah
+   91  less scaffold.log 
+   92  mc
+   93  seqtk subseq Poil_scaffold.fa name_scaff.txt > longest_scaffold.fna
+   94  mc
+   95  ls
+   96  mc
+   97  ls
+   98  nano Poil_gapClosed.fa 
+   99  echo scaffold1_cov232 > longest_scaffold_gapped.txt
+  100  seqtk subseq Poil_gapClosed.fa longest_scaffold_gapped.txt > gapclosed_longest_scaffold.fa
+  101  ls
+  102  mc
+  103  jupyter lab --no-browser --port 7878
+  104  python3 -m jupyter lab --no-browser --port 7878
+  105  jupyter lab --no-browser --port 7878
+  106  python3 -m jupyter lab --no-browser --port 7878
+  107  jupyter lab --no-browser --port 7878
+  108  jupyterlab --no-browser --port 7878
+  109  jupyter lab --no-browser --port 7878
+  110  htop
+  111  less assemble.log 
+  112  ls
+  113  less Poil_contig.fa 
+  114  mc
+  115  ls
+  116  htop
+  117  ls
+  118  less scaffold.log 
+  119  htop
+  120  pip install jupyter
+  121  pip install jupyterlab
+  122  echo "scaffold1_len3830960_cov232" > name_scaff.txt
+  123  seqtk subseq Poil_scaffold.fa name_scaff.txt > BigScaff.fna
+  124  time platanus gap_close -o Poil -c Poil_scaffold.fa -IP1 trimmed_fastq/pe_R1.fastq.trimmed  trimmed_fastq/pe_R2.fastq.trimmed -OP2 trimmed_fastq/mp_R1.fastq.int_trimmed trimmed_fastq/mp_R2.fastq.int_trimmed 2> gapclose.log
+  125  less gapclose.log 
+  126  htop
+  127  ls
+  128  ls -lah
+  129  ls
+  130  path
+  131  find ~
+  132  ls
+  133  ls fastqc/
+  134  ls multiqc/
+  135  ls -r multiqc/
+  136  ls multiqc/multiqc_data/
+  137  ls
+  138  less MPR1sub.fq 
+  139  history | less
+  140  jupyter lab --no-browser --port 7878
+  141  ls
+  142  ls
+  143  mv * ./part1/
+  144  mkdir part1
+  145  mv ./* ./part1/
+  146  cd ..
+  147  ls
+  148  cd vsmiturich/
+  149  ls
+  150  ls part1/
+  151  ln -s /usr/share/data-minor-bioinf/assembly/
+  152  ls
+  153  rm assembly
+  154  ln -s /usr/share/data-minor-bioinf/assembly/oil_R1.fastq
+  155  ln -s /usr/share/data-minor-bioinf/assembly/oil_R2.fastq
+  156  ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R1_001.fastq
+  157  ln -s /usr/share/data-minor-bioinf/assembly/oilMP_S4_L001_R2_001.fastq
+  158  seqtk sample -s121 oil_R1.fastq 1500000 > R1sub.fq
+  159  ды
+  160  ls
+  161  seqtk sample -s121 oil_R1.fastq 1000000 > R1sub.fq
+  162  seqtk sample -s121 oil_R2.fastq 1000000 > R2sub.fq
+  163  seqtk sample -s121 oilMP_S4_L001_R1_001.fastq 300000 > MPR1sub.fq
+  164  seqtk sample -s121 oilMP_S4_L001_R2_001.fastq 300000 > MPR2sub.fq
+  165  mkdir fastqc
+  166  ls *.fq | xargs -P 4 -tI{} fastqc -o fastqc {}
+  167  mkdir multifastqc
+  168  mkdir multiqc
+  169  ls
+  170  multiqc -o multiqc fastqc
+  171  ls multifastqc/
+  172  rm -r multifastqc/
+  173  ls multiqc/
+  174  platanus_trim R1sub.fq R2sub.fq
+  175  nano platanus_trim.log
+  176  platanus_internal_trim MPR1sub.fq MPR2sub.fq
+  177  nano platanus_internal_trim.log
+  178  ls
+  179  rm *.fastq
+  180  ls
+  181  history 20
+  182  mkdir trimmed_fastq
+  183  mv -v *trimmed trimmed_fastq/
+  184  mkdir trimmed_fastqc
+  185  ls trimmed_fastq/* | xargs -P 4 -tI{} fastqc -o trimmed_fastqc {}
+  186  mkdir trimmed_multiqc
+  187  multiqc -o trimmed_multiqc trimmed_fastqc
+  188  time platanus assemble -o Poil -f trimmed_fastq/R1_paired_end.fastq.trimmed trimmed_fastq/R2_paired_end.fastq.trimmed | tee assemble.log 
+  189  time platanus assemble -o Poil -f trimmed_fastq/R1_paired_end.fastq.trimmed trimmed_fastq/R2_paired_end.fastq.trimmed
+  190  ls trimmed_fastqc
+  191  ls
+  192  ls trimmed_fastq
+  193  time platanus assemble -o Poil -f trimmed_fastq/R1sub.fastq.trimmed trimmed_fastq/R2sub.fastq.trimmed | tee assembly.log
+  194  time platanus assemble -o Poil -f trimmed_fastq/R1sub.fq.trimmed trimmed_fastq/R2sub.fq.trimmed | tee assemble.log
+  195  time platanus scaffold -o Poil -c Poil_contig.fa -IP1 trimmed_fastq/R1sub.fq.trimmed  trimmed_fastq/R2sub.fq.trimmed -OP2 trimmed_fastq/MPR1sub.fq.int_trimmed trimmed_fastq/MPR2sub.fq.int_trimmed | tee scaffold.log
+  196  time platanus gap_close -o Poil -c Poil_scaffold.fa -IP1 trimmed_fastq/R1sub.fq.trimmed  trimmed_fastq/R2sub.fq.trimmed -OP2 trimmed_fastq/MPR1sub.fq.int_trimmed trimmed_fastq/MPR2sub.fq.int_trimmed | tee gap_close.log
+  197  ls
+  198  less Poil_gapClosed.fa 
+  199  less Poil_scaffold.fa 
+  200  less Poil_gapClosed.fa 
+  201  less Poil_scaffold.fa 
+  202  less Poil_scaffold.fa 
+  203  echo scaffold4_len2964258_cov46 > scaffold_name.txt
+  204  less Poil_gapClosed.fa 
+  205  echo scaffold4_cov46 > longest_scaffold_gapclosed.txt
+  206  seqtk subseq Poil_scaffold.fa scaffold_name.txt > longest_scaffold.fna
+  207  seqtk subseq Poil_gapClosed.fa longest_scaffold_gapclosed.txt > longest_scaffold_gapclosed.fna
+  208  ls
+  209  cd part
+  210  cd part1
+  211  find html
+  212  find *.html
+  213  ls
+  214  ls fastqc/
+  215  ls multiqc/
+  216  ls multiqc/multiqc_
+  217  ls multiqc/multiqc_data/
+  218  ls
+  219  ls trimmed_multiqc/
+  220  ls
+  221  cd ..
+  222  history >cmd.log
